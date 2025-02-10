@@ -1,0 +1,13 @@
+# The main pipeline for db_test
+resources:
+  pipelines:
+    db_test_pipeline:
+      name: db_test_pipeline
+      catalog: operations_dev
+      target: db_test_${bundle.target}
+      libraries:
+        - notebook:
+            path: ../src/dlt_pipeline.ipynb
+
+      configuration:
+        bundle.sourcePath: ${workspace.file_path}/src
